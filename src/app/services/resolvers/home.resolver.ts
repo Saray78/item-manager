@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { Observable, of } from 'rxjs';
+import { ItemManagerService } from '../item-manager.service';
 
 @Injectable()
 export class HomeResolver implements Resolve<any | null> {
-  constructor() {
+  constructor(private itemManagerService: ItemManagerService) {
   }
 
   resolve(route: ActivatedRouteSnapshot): Observable<any | null> {
-    console.log(route, 'aqui');
-    return of(['122']);
+    return this.itemManagerService.getItemManagerItems();
   }
 }

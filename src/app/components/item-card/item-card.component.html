@@ -1,0 +1,14 @@
+<div id="itemCard" class="item-card-container">
+    <div class="item-card" *ngFor="let item of itemCardData" style="">
+        <div class="item-image">
+            <img [src]="item.image"
+                 [title]="item.title"
+                 [alt]="item.title"/>
+        </div>
+        <div class="item-body">
+            <p class="item-price"><strong>{{item.price}} €</strong></p>
+            <p>{{item.title}}</p>
+            <p>{{item.description}}</p>
+        </div>
+    </div>
+</div>

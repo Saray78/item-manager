@@ -1,0 +1,30 @@
+@import "src/variables";
+.item-card-container {
+  font-family: $default-font;
+  flex-direction: row;
+  position: relative;
+  flex-wrap: wrap;
+  display: flex;
+  margin: 0 auto;
+  max-width: 1200px;
+  .item-card {
+    background-color: white;
+    margin: 10px;
+    width: 280px;
+    //height: 500px;
+    border-radius: 6px;
+    .item-image {
+      img {
+        border: {
+          top-left-radius: 6px;
+          top-right-radius: 6px;
+        }
+        width: 280px;
+        height: 280px;
+      }
+    }
+    .item-body {
+      padding: 0 12px 0 12px;
+    }
+  }
+}

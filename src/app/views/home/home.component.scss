@@ -1,6 +1,14 @@
 @import "../../../styles/variables";
 @import "src/styles/buttons";
 
+.item-search-container {
+  //display: flex;
+  //align-items: center;
+  //height: 100%;
+  //width: 100%;
+  margin: auto 4em auto 4em;
+}
+
 .item-card-container {
   background-color: $card-container-background;
   padding-bottom: 100px;

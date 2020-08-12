@@ -6,6 +6,7 @@ import { HomeResolver } from '../../services/resolvers/home.resolver';
 import { ItemCardModule } from '../../components/item-card/item-card.module';
 import { FormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ItemSearchModule } from '../../components/item-search/item-search.module';
 
 
 
@@ -15,7 +16,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     HomeRoutingModule,
     ItemCardModule,
     FormsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    ItemSearchModule
   ],
   exports: [
     HomeComponent

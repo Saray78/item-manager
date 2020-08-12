@@ -8,10 +8,10 @@ import { ItemCardData, ItemCardModel } from '../../models/item-card-model/item-c
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  itemCardData;
-  item;
-  show = 5;
-  isLoading = true;
+  itemCardData: ItemCardModel[];
+  item: ItemCardModel;
+  itemsToShow: number = 5;
+  isLoading: boolean = true;
 
   constructor(private route: ActivatedRoute) {
   }
@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
   increaseShow(): void {
     this.isLoading = true;
     setTimeout(() => {
-      this.show += 5;
+      this.itemsToShow += 5;
       this.isLoading = false;
     }, 1000);
   }

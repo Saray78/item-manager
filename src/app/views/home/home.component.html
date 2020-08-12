@@ -1,11 +1,14 @@
-<input [(ngModel)]="item"/>
-<button (click)="searchItem(item)">click me</button>
-{{item}}
+<div class="item-search-container d-flex">
+    <div class="item-search d-flex w-100">
+        <app-item-search style="flex: 1" (handleItem)="searchItem($event)"></app-item-search>
+        <div><span>boton modal</span></div>
+    </div>
+</div>
 
 <div class="item-card-container">
-    <app-item-card [itemCardData]="itemCardData | slice: 0 : show"></app-item-card>
+    <app-item-card [itemCardData]="itemCardData | slice: 0 : itemsToShow"></app-item-card>
     <div class="d-flex justify-content-center align-items-center"
-         *ngIf="show < itemCardData.length && !isLoading"
+         *ngIf="itemsToShow < itemCardData.length && !isLoading"
          style="height: 50px;">
         <button class="show-more-items"
                 role="button"

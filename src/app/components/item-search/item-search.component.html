@@ -1,0 +1,14 @@
+<div class="item-search d-flex">
+    <form class="d-flex" #itemSearchForm="ngForm">
+        <input [(ngModel)]="item"
+               class="border-0 w-100"
+               maxlength="500"
+               name="item-search"/>
+        <div class="search-icon d-flex">
+            <button class="border-0"
+                    (click)="searchItem(itemSearchForm.value)"><i class="material-icons">search</i></button>
+        </div>
+    </form>
+
+</div>
+

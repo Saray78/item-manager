@@ -6,9 +6,9 @@
 </div>
 
 <div class="item-card-container">
-    <app-item-card [itemCardData]="itemCardData | slice: 0 : itemsToShow"></app-item-card>
+    <app-item-card [itemCardData]="itemCardDataFiltered | slice: 0 : itemsToShow"></app-item-card>
     <div class="d-flex justify-content-center align-items-center"
-         *ngIf="itemsToShow < itemCardData.length && !isLoading"
+         *ngIf="itemsToShow < itemCardDataFiltered.length && !isLoading"
          style="height: 50px;">
         <button class="show-more-items"
                 role="button"

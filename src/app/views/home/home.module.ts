@@ -7,6 +7,8 @@ import { ItemCardModule } from '../../components/item-card/item-card.module';
 import { FormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ItemSearchModule } from '../../components/item-search/item-search.module';
+import { FilterSearchPipe } from '../../pipes/filter-search.pipe';
+import { FilterSearchPipeModule } from '../../pipes/filter-search.pipe.module';
 
 
 
@@ -17,14 +19,16 @@ import { ItemSearchModule } from '../../components/item-search/item-search.modul
     ItemCardModule,
     FormsModule,
     MatProgressSpinnerModule,
-    ItemSearchModule
+    ItemSearchModule,
+    FilterSearchPipeModule
   ],
   exports: [
     HomeComponent
   ],
   declarations: [HomeComponent],
   providers: [
-    HomeResolver
+    HomeResolver,
+    FilterSearchPipe
   ]
 })
 export class HomeModule {

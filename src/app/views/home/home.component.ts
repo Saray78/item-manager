@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ItemCardData, ItemCardModel } from '../../models/item-card-model/item-card-model';
+import { FilterSearchPipe } from '../../pipes/filter-search.pipe';
 
 @Component({
   selector: 'app-home',
@@ -9,17 +10,20 @@ import { ItemCardData, ItemCardModel } from '../../models/item-card-model/item-c
 })
 export class HomeComponent implements OnInit {
   itemCardData: ItemCardModel[];
+  itemCardDataFiltered: ItemCardModel[];
   item: ItemCardModel;
   itemsToShow: number = 5;
   isLoading: boolean = true;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute,
+              private filterSearchPipe: FilterSearchPipe) {
   }
 
   ngOnInit(): void {
     this.route.data.subscribe(({ itemData }: ItemCardData) => {
       this.isLoading = true;
       this.itemCardData = itemData;
+      this.itemCardDataFiltered = [...this.itemCardData];
       this.isLoading = false;
       console.log(this.itemCardData);
     });
@@ -34,14 +38,8 @@ export class HomeComponent implements OnInit {
   }
 
   searchItem(item): void {
-    this.itemCardData = [{
-      title: 'iPhone 6S Oro',
-      description: 'Vendo un iPhone 6 S color Oro nuevo y sin estrenar. Me han dado uno en el trabajo y no necesito el que me compré. En tienda lo encuentras por 749 euros y yo lo vendo por 740. Las descripciones las puedes encontrar en la web de apple. Esta libre.',
-      price: '740',
-      email: 'iphonemail@wallapop.com',
-      image: 'https://frontend-tech-test-data.s3-eu-west-1.amazonaws.com/img/iphone.png'
-    }];
-    console.log(item);
+    this.itemCardDataFiltered = this.filterSearchPipe
+      .transform(this.itemCardData, item.inputItem, ['title', 'description', 'price', 'email']);
   }
 
 }

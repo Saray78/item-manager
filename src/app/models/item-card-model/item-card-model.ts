@@ -1,7 +1,5 @@
 export interface ItemCardData {
-  itemData: {
-    itemList: ItemCardModel[]
-  };
+  itemData: ItemCardModel[];
 }
 
 export interface ItemCardModel {

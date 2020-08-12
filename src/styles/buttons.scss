@@ -1,0 +1,17 @@
+@import "./variables";
+
+.button {
+  outline: none;
+  cursor: pointer;
+  border-radius: 2rem;
+  border: none;
+}
+
+.primary-button {
+  @extend .button;
+  background-color: #22bdaf;
+  color: white;
+  &:hover {
+    background-color: #228375;
+  }
+}

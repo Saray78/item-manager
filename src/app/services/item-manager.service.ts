@@ -16,9 +16,7 @@ export class ItemManagerService {
         delay(500),
         map(response => {
           const items = {...response};
-          return {
-            itemList: items.items
-          };
+          return items.items;
         })
       );
   }

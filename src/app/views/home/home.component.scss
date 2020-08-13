@@ -1,12 +1,21 @@
 @import "../../../styles/variables";
 @import "src/styles/buttons";
 
+
+
 .item-search-container {
   padding: 15px 15px;
+  border-bottom: 1px solid #e8ebed;
   .fav-list-container {
     width: 300px;
     justify-content: flex-end;
   }
+}
+.item-sort-container {
+  border-bottom: 1px solid #e8ebed;
+  height: 10px;
+  padding: 15px 15px;
+  cursor: pointer;
 }
 
 .item-card-container {

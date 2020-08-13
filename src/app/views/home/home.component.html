@@ -10,6 +10,10 @@
     </div>
 </div>
 
+<div class="item-sort-container d-flex align-items-center">
+    <app-item-sort></app-item-sort>
+</div>
+
 <div class="item-card-container">
     <app-item-card [itemCardData]="itemCardDataFiltered | slice: 0 : itemsToShow"></app-item-card>
     <div class="d-flex justify-content-center align-items-center"

@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { ItemCardComponent } from './item-card.component';
 import { CommonModule } from '@angular/common';
+import { FilterSearchPipeModule } from '../../pipes/filter-search.pipe.module';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FilterSearchPipeModule
   ],
   exports: [
     ItemCardComponent

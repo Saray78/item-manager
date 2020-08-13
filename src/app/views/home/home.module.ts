@@ -9,7 +9,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ItemSearchModule } from '../../components/item-search/item-search.module';
 import { FilterSearchPipe } from '../../pipes/filter-search.pipe';
 import { FilterSearchPipeModule } from '../../pipes/filter-search.pipe.module';
-
+import { ItemSortModule } from '../../components/item-sort/item-sort.module';
 
 
 @NgModule({
@@ -20,7 +20,9 @@ import { FilterSearchPipeModule } from '../../pipes/filter-search.pipe.module';
     FormsModule,
     MatProgressSpinnerModule,
     ItemSearchModule,
-    FilterSearchPipeModule
+    FilterSearchPipeModule,
+    ItemSortModule
+
   ],
   exports: [
     HomeComponent

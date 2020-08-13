@@ -1,0 +1,22 @@
+.item-sort {
+  span {
+    height: 28px;
+    padding: 0 15px 0 15px;
+    color: #6D7579;
+    &:hover {
+      background-color: #F0F2F2;
+    }
+  }
+}
+
+.item-sort-content {
+  z-index: 5;
+  padding: 15px;
+  height: 164px;
+  width: 299px;
+  border-radius: 3px;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 8px 0 rgba(0,0,0,0.12), 0 8px 8px 0 rgba(0,0,0,0.05);
+  position: absolute;
+  cursor: default;
+}

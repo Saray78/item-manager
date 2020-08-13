@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   itemCardDataFiltered: ItemCardModel[];
   item: ItemCardModel;
   itemsToShow: number = 5;
-  isLoading: boolean = true;
+  isLoading: boolean = false;
 
   constructor(private route: ActivatedRoute,
               private filterSearchPipe: FilterSearchPipe) {
@@ -21,17 +21,15 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.data.subscribe(({ itemData }: ItemCardData) => {
-      this.isLoading = true;
       this.itemCardData = itemData;
       this.itemCardDataFiltered = [...this.itemCardData];
       this.truncateItemDescription(this.itemCardDataFiltered);
-      this.isLoading = false;
       console.log(this.itemCardData);
     });
   }
 
-  private truncateItemDescription(itemCardDataFiltered: ItemCardModel[]): any {
-    itemCardDataFiltered.forEach((item) => {
+  private truncateItemDescription(itemCardDataFiltered: ItemCardModel[]): void {
+    itemCardDataFiltered.forEach((item: ItemCardModel) => {
       item.description = `${item.description.substring(0, 175 - 2)}…`;
     });
   }

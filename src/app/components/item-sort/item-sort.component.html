@@ -1,0 +1,14 @@
+<div class="item-sort">
+  <span class="d-flex align-items-center">
+    <i class="material-icons">sort</i>
+    Ordenar por
+</span>
+</div>
+
+<div class="item-sort-content">
+    <div *ngFor="let sortingField of sortingFields">
+        <span>{{sortingField.name}}</span>
+        <span>{{sortingField.sortingButtons.ascendantButton}}</span>
+        <span>{{sortingField.sortingButtons.descendantButton}}</span>
+    </div>
+</div>

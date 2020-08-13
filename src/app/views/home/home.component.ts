@@ -24,8 +24,15 @@ export class HomeComponent implements OnInit {
       this.isLoading = true;
       this.itemCardData = itemData;
       this.itemCardDataFiltered = [...this.itemCardData];
+      this.truncateItemDescription(this.itemCardDataFiltered);
       this.isLoading = false;
       console.log(this.itemCardData);
+    });
+  }
+
+  private truncateItemDescription(itemCardDataFiltered: ItemCardModel[]): any {
+    itemCardDataFiltered.forEach((item) => {
+      item.description = `${item.description.substring(0, 175 - 2)}…`;
     });
   }
 

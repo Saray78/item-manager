@@ -2,11 +2,11 @@
 @import "src/styles/buttons";
 
 .item-search-container {
-  //display: flex;
-  //align-items: center;
-  //height: 100%;
-  //width: 100%;
-  margin: auto 4em auto 4em;
+  padding: 15px 15px;
+  .fav-list-container {
+    width: 300px;
+    justify-content: flex-end;
+  }
 }
 
 .item-card-container {

@@ -1,4 +1,5 @@
 @import "../../../styles/variables";
+
 .item-card-container {
   padding-bottom: 30px;
   font-family: $default-font;
@@ -12,7 +13,6 @@
     background-color: white;
     margin: 10px;
     width: 280px;
-    //height: 500px;
     border-radius: 6px;
     .item-image {
       img {
@@ -26,6 +26,26 @@
     }
     .item-body {
       padding: 0 12px 0 12px;
+      .item-header-content {
+        .item-price {
+          margin-top: 12px;
+        }
+        .material-icons {
+          cursor: pointer;
+          &.favorite {
+            &.active, &:hover {
+              color: #FD6C67;
+            }
+          }
+        }
+      }
+    }
+    .item-card-footer {
+      padding: 0 12px 0 12px;
+      .email {
+        color: #7A8183;
+        font-size: 12px;
+      }
     }
   }
 }

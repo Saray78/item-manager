@@ -8,9 +8,14 @@ import { ItemCardModel } from '../../models/item-card-model/item-card-model';
 })
 export class ItemCardComponent implements OnInit {
   @Input() itemCardData: ItemCardModel[];
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
+  }
+
+  setFavoriteItem(item): void {
+    item.isFavoriteItem = !item.isFavoriteItem;
   }
 
 }

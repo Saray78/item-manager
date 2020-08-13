@@ -1,7 +1,12 @@
 <div class="item-search-container d-flex">
     <div class="item-search d-flex w-100">
         <app-item-search style="flex: 1" (handleItem)="searchItem($event)"></app-item-search>
-        <div><span>boton modal</span></div>
+    </div>
+    <div class="fav-list-container d-flex align-items-center">
+        <span class="d-flex align-items-center justify-content-center">
+            Ver favoritos
+            <i class="material-icons">favorite</i>
+        </span>
     </div>
 </div>
 

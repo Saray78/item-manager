@@ -1,7 +1,46 @@
+@import "src/styles/buttons";
+
 .item-search {
+  border-radius: 6px;
+  overflow: hidden;
+  vertical-align: middle;
+  white-space: nowrap;
+  height: 40px;
   form {
     flex: 1;
-    //width: 600px;
-    border: 1px solid grey;
+    input {
+      background: #d7dadc;
+      font-size: 10pt;
+      float: left;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+
+      border: none;
+      padding: 0 15px 0 15px;
+      outline: 0;
+      border-radius: 6px;
+      &:focus {
+        border: 1px solid #22bdaf;
+        background-color: white;
+      }
+    }
+  }
+
+  .search-icon {
+    margin:  {
+      //left: -50px;
+      top: 2px;
+      bottom: 2px;
+    };
+    //padding-left: 15px;
+    button {
+      @extend .button;
+      background-color: transparent;
+      cursor: pointer;
+      &:hover {
+        color: #22bdaf;
+      }
+    }
+
   }
 }

@@ -8,4 +8,5 @@ export interface ItemCardModel {
   price: string;
   email: string;
   image: string;
+  isFavoriteItem?: boolean;
 }

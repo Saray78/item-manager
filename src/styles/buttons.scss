@@ -7,6 +7,11 @@
   border: none;
 }
 
+.sorting-button--active {
+  color: white;
+  background-color: $active-sorting-buttons;
+}
+
 .primary-button {
   @extend .button;
   background-color: #22bdaf;
@@ -15,3 +20,5 @@
     background-color: #228375;
   }
 }
+
+

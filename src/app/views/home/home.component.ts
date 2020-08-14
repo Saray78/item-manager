@@ -4,7 +4,7 @@ import { ItemCardData, ItemCardModel } from '../../models/item-card-model/item-c
 import { FilterSearchPipe } from '../../pipes/filter-search/filter-search.pipe';
 import { OrderByPipe } from '../../pipes/order-by/order-by.pipe';
 import { Subject } from 'rxjs';
-import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 import { SortItemService } from '../../services/sort-item.service';
 import { SearchItemService } from '../../services/search-item.service';
 
@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   item: ItemCardModel;
   itemsToShow: number = 5;
   isLoading: boolean = false;
+  isNewSearch: boolean = false;
   private unsubscribe: Subject<void> = new Subject<void>();
 
 
@@ -37,23 +38,6 @@ export class HomeComponent implements OnInit, OnDestroy {
         this.itemCardDataFiltered = [...this.itemCardData];
         this.truncateItemDescription(this.itemCardDataFiltered);
         console.log(this.itemCardData);
-      });
-
-    this.sortItem.sortList$
-      .pipe(takeUntil(this.unsubscribe))
-      .subscribe(res => {
-        if (res) {
-          this.itemCardDataFiltered = this.orderByPipe.transform(this.itemCardDataFiltered, res.sortingField, res.sortingDirection);
-          console.log(this.itemCardDataFiltered);
-        }
-      });
-
-    this.searchItemService.searchItem$
-      .pipe(takeUntil(this.unsubscribe))
-      .subscribe(item => {
-        if (item) {
-          this.searchItem(item);
-        }
       });
   }
 
@@ -76,8 +60,18 @@ export class HomeComponent implements OnInit, OnDestroy {
     }, 1000);
   }
 
-  private searchItem(item): void {
+  setSearchedItem(item): void {
+    this.isNewSearch = true;
+    this.itemsToShow = 5;
     this.itemCardDataFiltered = this.filterSearchPipe
       .transform(this.itemCardData, item, ['title', 'description', 'price', 'email']);
+    setTimeout(() => {
+      this.isNewSearch = false;
+    }, 1000);
+  }
+
+  setSortedItems(item): void {
+    this.itemCardDataFiltered = this.orderByPipe
+      .transform(this.itemCardDataFiltered, item.sortingField, item.descendantSorting, item.isStringFieldType);
   }
 }

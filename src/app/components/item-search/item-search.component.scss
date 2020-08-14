@@ -1,3 +1,4 @@
+@import "src/styles/mixins";
 @import "src/styles/buttons";
 
 .item-search {
@@ -9,18 +10,19 @@
   form {
     flex: 1;
     input {
-      background: #d7dadc;
+      @include placeholder {
+        color: #a1a4a6;
+      }
+      background-color: #d7dadc;
       font-size: 10pt;
       float: left;
-      -webkit-border-radius: 5px;
-      -moz-border-radius: 5px;
-
+      @include rounded(5px);
       border: none;
       padding: 0 15px 0 15px;
       outline: 0;
       border-radius: 6px;
       &:focus {
-        border: 1px solid #22bdaf;
+        border: 1px solid $default-color;
         background-color: white;
       }
     }
@@ -38,7 +40,7 @@
         cursor: not-allowed;
       }
       &:hover:not(:disabled) {
-        color: #22bdaf;
+        color: $default-color;
       }
     }
 

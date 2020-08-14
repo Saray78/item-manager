@@ -5,20 +5,27 @@
     <div class="item-sort">
   <span class="d-flex align-items-center" (click)="toggleSortingPanel()">
     <i class="material-icons">sort</i>
-    Order by
+      <span class="d-flex align-items-center"
+            [class.active]="currentSortingField && !hasToShowSortingPanel">
+          Order by
+      </span>
 </span>
     </div>
 
     <div class="item-sort-container-content" [hidden]="!hasToShowSortingPanel">
         <div *ngFor="let sortingField of sortingFields" class="item-sort-content d-flex">
-            <div class="name d-flex align-items-center">{{sortingField.name}}</div>
+            <div class="name d-flex align-items-center">
+                {{sortingField.name}}
+            </div>
             <div class="buttons d-flex">
                  <span class="descendant-button d-flex justify-content-center align-items-center"
-                       (click)="sortField(sortingField.name.toLowerCase())">
+                       [class.active]="currentSortingField === order.desc + sortingField.name.toLowerCase()"
+                       (click)="sortField(sortingField.name.toLowerCase(), true, order.desc + sortingField.name.toLowerCase())">
                     {{sortingField.sortingButtons.descendantButton}}
                 </span>
                 <span class="ascendant-button d-flex justify-content-center align-items-center"
-                      (click)="sortField(sortingField.name.toLowerCase(), false)">
+                      [class.active]="currentSortingField === order.asc + sortingField.name.toLowerCase()"
+                      (click)="sortField(sortingField.name.toLowerCase(), false, order.asc + sortingField.name.toLowerCase())">
                     {{sortingField.sortingButtons.ascendantButton}}
                 </span>
             </div>

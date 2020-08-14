@@ -1,6 +1,8 @@
 <div class="item-search d-flex">
     <form class="d-flex" #itemSearchForm="ngForm">
         <input [(ngModel)]="item"
+               placeholder="Search items"
+               autocomplete="off"
                class="border-0 w-100"
                maxlength="500"
                name="inputItem"/>

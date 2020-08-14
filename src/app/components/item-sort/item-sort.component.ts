@@ -1,6 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ItemSortModel, SortingFields } from '../../models/item-sort-model/item-sort-model';
-import { ItemManagerService } from '../../services/item-manager.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ItemSortModel, Order, SortingFields } from '../../models/item-sort-model/item-sort-model';
 import { SortItemService } from '../../services/sort-item.service';
 
 @Component({
@@ -12,21 +11,39 @@ export class ItemSortComponent implements OnInit {
 
   sortingFields: ItemSortModel[] = SortingFields;
   hasToShowSortingPanel: boolean = false;
-  constructor(private sortItemService: SortItemService) {
+  currentSortingField: string;
+  readonly order = Order;
+  // tslint:disable-next-line:variable-name
+  private _isNewSearch: boolean;
+  @Input() set isNewSearch(value) {
+    if (value) {
+      this._isNewSearch = value;
+      this.currentSortingField = null;
+    }
+  }
+
+  get isNewSearch(): boolean {
+    return this._isNewSearch;
+  }
+  @Output() handleSortItem: EventEmitter<any> = new EventEmitter<any>();
+
+  constructor() {
   }
 
   ngOnInit(): void {
   }
 
-
   toggleSortingPanel(forceStatus?: boolean): void {
     this.hasToShowSortingPanel = forceStatus || !this.hasToShowSortingPanel;
   }
 
-  sortField(sortingField, sortingDirection = true): void {
-    this.sortItemService.saveSorting({
+
+  sortField(sortingField: string, descendantSorting: boolean = true, currentSortingField: string): void {
+    this.currentSortingField = currentSortingField;
+    this.handleSortItem.emit({
       sortingField,
-      sortingDirection
+      descendantSorting,
+      isStringFieldType: sortingField !== 'price'
     });
   }
 }

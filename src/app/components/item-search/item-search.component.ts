@@ -11,13 +11,13 @@ export class ItemSearchComponent implements OnInit {
   item: ItemCardModel;
   @Output() handleItem: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor(private searchItemService: SearchItemService) {
+  constructor() {
   }
 
   ngOnInit(): void {
   }
 
   searchItem(item): void {
-    this.searchItemService.saveSearchedItem(item.inputItem);
+    this.handleItem.emit(item.inputItem);
   }
 }

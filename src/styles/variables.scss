@@ -1,15 +1,22 @@
-$card-container-background: #ECEFF1;
+// Default colors
+$default-color: #22BDAF;
+$default-hover: #F0F2F2;
 
 // Font Families
-$source-sans-font: 'Verdana', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$default-font: $source-sans-font;
+$default-font: 'Verdana', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-// Font Weights
-$fw-ultra-light: 100;
-$fw-light: 300;
-$fw-regular: 400;
-$fw-normal: 400;
-$fw-medium: 500;
-$fw-semibold: 600;
-$fw-bold: 700;
-$fw-black: 900;
+// Card colors
+$card-container-background: #ECEFF1;
+
+// Search colors
+$search-container-border: #E8EBED;
+
+// Sort colors
+$sorting-fields-color: #6D7579;
+
+$border-sorting-buttons: #E1E4E5;
+$hover-sorting-fields: #F6F6F7;
+$hover-sorting-buttons: rgba(167, 179, 183, 0.16);
+$active-sorting-buttons: #45585E8A;
+
+

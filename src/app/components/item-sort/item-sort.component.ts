@@ -9,12 +9,17 @@ import { ItemSortModel, SortingFields } from '../../models/item-sort-model/item-
 export class ItemSortComponent implements OnInit {
 
   sortingFields: ItemSortModel[] = SortingFields;
+  hasToShowSortingPanel: boolean = false;
 
   constructor() {
   }
 
   ngOnInit(): void {
-    console.log(this.sortingFields)
+    console.log(this.sortingFields);
   }
 
+
+  toggleSortingPanel(forceStatus?: boolean): void {
+      this.hasToShowSortingPanel = forceStatus || !this.hasToShowSortingPanel;
+    }
 }

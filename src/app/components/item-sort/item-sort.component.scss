@@ -9,14 +9,43 @@
   }
 }
 
-.item-sort-content {
+.item-sort-container-content {
   z-index: 5;
-  padding: 15px;
-  height: 164px;
-  width: 299px;
+  height: 184px;
+  width: 300px;
   border-radius: 3px;
   background-color: #FFFFFF;
   box-shadow: 0 0 8px 0 rgba(0,0,0,0.12), 0 8px 8px 0 rgba(0,0,0,0.05);
   position: absolute;
   cursor: default;
+  .item-sort-content {
+    padding: 10px;
+    .name {
+      width: 30px;
+    }
+    .name, .buttons {
+      flex: 1 1 auto;
+      .ascendant-button, .descendant-button {
+        flex: 1 1 auto;
+        height: 24px;
+      }
+    }
+
+    .buttons {
+      border: 1px solid #E1E4E5;
+      border-radius: 3px;
+      .ascendant-button {
+        border-right: 1px solid #E1E4E5;
+      }
+    }
+    &:hover {
+      background-color: #F6F6F7;
+      &:last-child {
+        border-bottom: {
+          right-radius: 6px;
+          left-radius: 6px;
+        };
+      }
+    }
+  }
 }

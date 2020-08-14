@@ -28,16 +28,16 @@
 
   .search-icon {
     margin:  {
-      //left: -50px;
       top: 2px;
       bottom: 2px;
     };
-    //padding-left: 15px;
     button {
       @extend .button;
       background-color: transparent;
-      cursor: pointer;
-      &:hover {
+      &:disabled {
+        cursor: not-allowed;
+      }
+      &:hover:not(:disabled) {
         color: #22bdaf;
       }
     }

@@ -1,31 +1,65 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ItemCardData, ItemCardModel } from '../../models/item-card-model/item-card-model';
-import { FilterSearchPipe } from '../../pipes/filter-search.pipe';
+import { FilterSearchPipe } from '../../pipes/filter-search/filter-search.pipe';
+import { OrderByPipe } from '../../pipes/order-by/order-by.pipe';
+import { Subject } from 'rxjs';
+import { distinctUntilChanged, takeUntil } from 'rxjs/operators';
+import { SortItemService } from '../../services/sort-item.service';
+import { SearchItemService } from '../../services/search-item.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   itemCardData: ItemCardModel[];
   itemCardDataFiltered: ItemCardModel[];
   item: ItemCardModel;
   itemsToShow: number = 5;
   isLoading: boolean = false;
+  private unsubscribe: Subject<void> = new Subject<void>();
+
 
   constructor(private route: ActivatedRoute,
-              private filterSearchPipe: FilterSearchPipe) {
+              private filterSearchPipe: FilterSearchPipe,
+              private sortItem: SortItemService,
+              private searchItemService: SearchItemService,
+              private orderByPipe: OrderByPipe) {
   }
 
   ngOnInit(): void {
-    this.route.data.subscribe(({ itemData }: ItemCardData) => {
-      this.itemCardData = itemData;
-      this.itemCardDataFiltered = [...this.itemCardData];
-      this.truncateItemDescription(this.itemCardDataFiltered);
-      console.log(this.itemCardData);
-    });
+    this.route.data
+      .pipe(takeUntil(this.unsubscribe))
+      .subscribe(({ itemData }: ItemCardData) => {
+        this.itemCardData = itemData;
+        this.itemCardDataFiltered = [...this.itemCardData];
+        this.truncateItemDescription(this.itemCardDataFiltered);
+        console.log(this.itemCardData);
+      });
+
+    this.sortItem.sortList$
+      .pipe(takeUntil(this.unsubscribe))
+      .subscribe(res => {
+        if (res) {
+          this.itemCardDataFiltered = this.orderByPipe.transform(this.itemCardDataFiltered, res.sortingField, res.sortingDirection);
+          console.log(this.itemCardDataFiltered);
+        }
+      });
+
+    this.searchItemService.searchItem$
+      .pipe(takeUntil(this.unsubscribe))
+      .subscribe(item => {
+        if (item) {
+          this.searchItem(item);
+        }
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
   }
 
   private truncateItemDescription(itemCardDataFiltered: ItemCardModel[]): void {
@@ -42,9 +76,8 @@ export class HomeComponent implements OnInit {
     }, 1000);
   }
 
-  searchItem(item): void {
+  private searchItem(item): void {
     this.itemCardDataFiltered = this.filterSearchPipe
-      .transform(this.itemCardData, item.inputItem, ['title', 'description', 'price', 'email']);
+      .transform(this.itemCardData, item, ['title', 'description', 'price', 'email']);
   }
-
 }

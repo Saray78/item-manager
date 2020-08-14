@@ -7,7 +7,7 @@
         <div class="search-icon d-flex">
             <button class="border-0"
                     [disabled]="!item"
-                    (click)="searchItem(itemSearchForm.value)">
+                    (click)="item && searchItem(itemSearchForm.value)">
                 <i class="material-icons">search</i>
             </button>
         </div>

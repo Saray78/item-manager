@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ItemCardModel } from '../../models/item-card-model/item-card-model';
+import { SearchItemService } from '../../services/search-item.service';
 
 @Component({
   selector: 'app-item-search',
@@ -10,16 +11,13 @@ export class ItemSearchComponent implements OnInit {
   item: ItemCardModel;
   @Output() handleItem: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor() {
+  constructor(private searchItemService: SearchItemService) {
   }
 
   ngOnInit(): void {
   }
 
   searchItem(item): void {
-    if (item.inputItem && item.inputItem !== '' ) {
-      this.handleItem.emit(item);
-    }
+    this.searchItemService.saveSearchedItem(item.inputItem);
   }
-
 }

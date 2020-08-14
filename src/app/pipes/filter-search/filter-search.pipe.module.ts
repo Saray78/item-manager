@@ -6,7 +6,7 @@ import { FilterSearchPipe } from './filter-search.pipe';
     FilterSearchPipe
   ],
   declarations: [
-    FilterSearchPipe
+    FilterSearchPipe,
   ]
 })
 export class FilterSearchPipeModule {

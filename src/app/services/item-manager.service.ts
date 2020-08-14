@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
 import { itemsMock } from '../api-mocked/items.json';
 import { delay, map } from 'rxjs/operators';
 
@@ -8,14 +7,15 @@ import { delay, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ItemManagerService {
-  constructor() {}
+  constructor() {
+  }
 
   getItemManagerItems(): Observable<any> {
     return of(itemsMock)
       .pipe(
         delay(500),
         map(response => {
-          const items = {...response};
+          const items = { ...response };
           return items.items;
         })
       );

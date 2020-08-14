@@ -7,9 +7,11 @@ import { ItemCardModule } from '../../components/item-card/item-card.module';
 import { FormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ItemSearchModule } from '../../components/item-search/item-search.module';
-import { FilterSearchPipe } from '../../pipes/filter-search.pipe';
-import { FilterSearchPipeModule } from '../../pipes/filter-search.pipe.module';
+import { FilterSearchPipe } from '../../pipes/filter-search/filter-search.pipe';
+import { FilterSearchPipeModule } from '../../pipes/filter-search/filter-search.pipe.module';
 import { ItemSortModule } from '../../components/item-sort/item-sort.module';
+import { OrderByPipe } from '../../pipes/order-by/order-by.pipe';
+import { OrderByPipeModule } from '../../pipes/order-by/order-by.pipe.module';
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import { ItemSortModule } from '../../components/item-sort/item-sort.module';
     MatProgressSpinnerModule,
     ItemSearchModule,
     FilterSearchPipeModule,
-    ItemSortModule
+    ItemSortModule,
+    OrderByPipeModule
 
   ],
   exports: [
@@ -30,7 +33,8 @@ import { ItemSortModule } from '../../components/item-sort/item-sort.module';
   declarations: [HomeComponent],
   providers: [
     HomeResolver,
-    FilterSearchPipe
+    FilterSearchPipe,
+    OrderByPipe
   ]
 })
 export class HomeModule {

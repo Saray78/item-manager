@@ -13,8 +13,14 @@
         <div *ngFor="let sortingField of sortingFields" class="item-sort-content d-flex">
             <div class="name d-flex align-items-center">{{sortingField.name}}</div>
             <div class="buttons d-flex">
-                <span class="ascendant-button d-flex justify-content-center align-items-center">{{sortingField.sortingButtons.ascendantButton}}</span>
-                <span class="descendant-button d-flex justify-content-center align-items-center">{{sortingField.sortingButtons.descendantButton}}</span>
+                 <span class="descendant-button d-flex justify-content-center align-items-center"
+                       (click)="sortField(sortingField.name.toLowerCase())">
+                    {{sortingField.sortingButtons.descendantButton}}
+                </span>
+                <span class="ascendant-button d-flex justify-content-center align-items-center"
+                      (click)="sortField(sortingField.name.toLowerCase(), false)">
+                    {{sortingField.sortingButtons.ascendantButton}}
+                </span>
             </div>
         </div>
     </div>

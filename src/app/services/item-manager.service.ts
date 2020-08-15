@@ -15,7 +15,7 @@ export class ItemManagerService {
       .pipe(
         delay(500),
         map(response => {
-          const items = { ...response };
+          const items = { ...response } as any;
           return items.items;
         })
       );

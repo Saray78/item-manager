@@ -18,6 +18,7 @@ export class ItemSortComponent implements OnInit {
   @Input() set isNewSearch(value) {
     if (value) {
       this._isNewSearch = value;
+      console.log('aqio')
       this.currentSortingField = null;
     }
   }
@@ -25,6 +26,7 @@ export class ItemSortComponent implements OnInit {
   get isNewSearch(): boolean {
     return this._isNewSearch;
   }
+
   @Output() handleSortItem: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() {
@@ -36,7 +38,6 @@ export class ItemSortComponent implements OnInit {
   toggleSortingPanel(forceStatus?: boolean): void {
     this.hasToShowSortingPanel = forceStatus || !this.hasToShowSortingPanel;
   }
-
 
   sortField(sortingField: string, descendantSorting: boolean = true, currentSortingField: string): void {
     this.currentSortingField = currentSortingField;

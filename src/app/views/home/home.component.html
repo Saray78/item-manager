@@ -3,7 +3,7 @@
         <app-item-search (handleItem)="setSearchedItem($event)" style="flex: 1"></app-item-search>
     </div>
     <div class="fav-list-container d-flex align-items-center">
-        <span class="d-flex align-items-center justify-content-center">
+        <span class="d-flex align-items-center justify-content-center" (click)="openFavoriteItemModal()">
             Ver favoritos
             <i class="material-icons">favorite</i>
         </span>
@@ -15,7 +15,7 @@
 </div>
 
 <div class="item-card-container">
-    <app-item-card [itemCardData]="itemCardDataFiltered | slice: 0 : itemsToShow"></app-item-card>
+    <app-item-card [itemCardData]="itemCardDataFiltered | pureSlice: 0 : itemsToShow"></app-item-card>
     <div class="d-flex justify-content-center align-items-center"
          *ngIf="itemsToShow < itemCardDataFiltered.length && !isLoading"
          style="height: 50px;">

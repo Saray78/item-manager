@@ -86,3 +86,27 @@
     }
   }
 }
+
+@media (min-width: 200px) {
+  .item-card-container {
+    max-width: 300px;
+  }
+}
+
+@media (min-width: 700px) {
+  .item-card-container {
+    max-width: 600px;
+  }
+}
+
+@media (min-width: 992px) {
+  .item-card-container {
+    max-width: 900px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .item-card-container {
+    max-width: 1200px;
+  }
+}

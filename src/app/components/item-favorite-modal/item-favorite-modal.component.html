@@ -1,7 +1,10 @@
 <div>
-    <app-item-search></app-item-search>
+    <app-item-search (handleItem)="searchFavoritesByTitle($event)"></app-item-search>
 </div>
 
 <div>
-    <app-item-card [itemCardData]="favoriteItemCardData | filterByFavorites"></app-item-card>
+    <app-item-card
+            [itemCardData]="favoriteItemCardData | filterByFavorites | filterSearch : item :['title'] "
+            [itemCardDataMode]="itemCardDataMode">
+    </app-item-card>
 </div>

@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ItemCardModel } from '../../models/item-card-model/item-card-model';
-import { SearchItemService } from '../../services/search-item.service';
 
 @Component({
   selector: 'app-item-search',

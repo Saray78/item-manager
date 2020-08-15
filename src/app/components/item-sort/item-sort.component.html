@@ -20,12 +20,16 @@
             <div class="buttons d-flex">
                  <span class="descendant-button d-flex justify-content-center align-items-center"
                        [class.active]="currentSortingField === order.desc + sortingField.name.toLowerCase()"
-                       (click)="sortField(sortingField.name.toLowerCase(), true, order.desc + sortingField.name.toLowerCase())">
+                       (click)="(currentSortingField !== order.desc + sortingField.name.toLowerCase()) &&
+                       sortField(sortingField.name.toLowerCase(), true,
+                       order.desc + sortingField.name.toLowerCase())">
                     {{sortingField.sortingButtons.descendantButton}}
                 </span>
                 <span class="ascendant-button d-flex justify-content-center align-items-center"
                       [class.active]="currentSortingField === order.asc + sortingField.name.toLowerCase()"
-                      (click)="sortField(sortingField.name.toLowerCase(), false, order.asc + sortingField.name.toLowerCase())">
+                      (click)="(currentSortingField !== order.asc + sortingField.name.toLowerCase()) &&
+                      sortField(sortingField.name.toLowerCase(), false,
+                      order.asc + sortingField.name.toLowerCase())">
                     {{sortingField.sortingButtons.ascendantButton}}
                 </span>
             </div>

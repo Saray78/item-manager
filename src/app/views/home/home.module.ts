@@ -12,7 +12,7 @@ import { FilterSearchPipeModule } from '../../pipes/filter-search/filter-search.
 import { ItemSortModule } from '../../components/item-sort/item-sort.module';
 import { OrderByPipe } from '../../pipes/order-by/order-by.pipe';
 import { OrderByPipeModule } from '../../pipes/order-by/order-by.pipe.module';
-import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { ItemFavoriteModalModule } from '../../components/item-favorite-modal/item-favorite-modal.module';
 import { PureSlicePipeModule } from '../../pipes/pure-slice/pure-slice.pipe.module';
 

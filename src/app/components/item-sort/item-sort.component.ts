@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ItemSortModel, Order, SortingFields } from '../../models/item-sort-model/item-sort-model';
-import { SortItemService } from '../../services/sort-item.service';
 
 @Component({
   selector: 'app-item-sort',
@@ -15,10 +14,9 @@ export class ItemSortComponent implements OnInit {
   readonly order = Order;
   // tslint:disable-next-line:variable-name
   private _isNewSearch: boolean;
-  @Input() set isNewSearch(value) {
+  @Input() set isNewSearch(value: boolean) {
     if (value) {
       this._isNewSearch = value;
-      console.log('aqio')
       this.currentSortingField = null;
     }
   }

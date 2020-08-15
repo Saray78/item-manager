@@ -9,39 +9,76 @@
   display: flex;
   margin: 0 auto;
   max-width: 1200px;
+
   .item-card {
+    flex-direction: column;
     background-color: white;
     margin: 10px;
     width: 280px;
     border-radius: 6px;
+
     .item-image {
       img {
         border: {
           top-left-radius: 6px;
           top-right-radius: 6px;
         }
-        width: 280px;
+        &.responsive-image {
+          //width: auto;
+          max-width: 100%;
+          overflow: hidden;
+
+          //height: auto;
+          //zoom: 2;  //increase if you have very small images
+          //
+          //display: block;
+          //margin: auto;
+          //
+          height: auto;
+          //
+          //width: auto;
+        }
         height: 280px;
+        width: 280px;
       }
     }
+
     .item-body {
+      flex: 1 1 auto;
       padding: 0 12px 0 12px;
+
       .item-header-content {
         .item-price {
           margin-top: 12px;
         }
+
         .material-icons {
           cursor: pointer;
+
           &.favorite {
             &.active, &:hover {
               color: #FD6C67;
             }
           }
         }
+
+        &.basic-card {
+          height: 36px;
+        }
+      }
+
+      .item-description {
+        font-size: 13px;
+      }
+
+      &.p-0 {
+        padding: 0;
       }
     }
+
     .item-card-footer {
       padding: 0 12px 0 12px;
+
       .email {
         color: #7A8183;
         font-size: 12px;

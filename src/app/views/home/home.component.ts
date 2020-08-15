@@ -1,13 +1,11 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ItemCardData, ItemCardModel } from '../../models/item-card-model/item-card-model';
 import { FilterSearchPipe } from '../../pipes/filter-search/filter-search.pipe';
 import { OrderByPipe } from '../../pipes/order-by/order-by.pipe';
 import { Subject } from 'rxjs';
-import { finalize, takeUntil } from 'rxjs/operators';
-import { SortItemService } from '../../services/sort-item.service';
-import { SearchItemService } from '../../services/search-item.service';
-import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
+import { takeUntil } from 'rxjs/operators';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ItemFavoriteModalComponent } from '../../components/item-favorite-modal/item-favorite-modal.component';
 
 @Component({
@@ -22,17 +20,13 @@ export class HomeComponent implements OnInit, OnDestroy {
   itemsToShow: number = 5;
   isLoading: boolean = false;
   isNewSearch: boolean = false;
-  private unsubscribe: Subject<void> = new Subject<void>();
-  isLoginDialogOpen: boolean = false;
 
+  private unsubscribe: Subject<void> = new Subject<void>();
 
   constructor(private route: ActivatedRoute,
               private filterSearchPipe: FilterSearchPipe,
-              private sortItem: SortItemService,
-              private searchItemService: SearchItemService,
               private orderByPipe: OrderByPipe,
-              public dialog: MatDialog,
-              private changeDetectorRef: ChangeDetectorRef) {
+              public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -77,19 +71,17 @@ export class HomeComponent implements OnInit, OnDestroy {
 
 
   setSortedItems(item): void {
-    this.itemCardDataFiltered = [... this.itemCardDataFiltered];
+    this.itemCardDataFiltered = [...this.itemCardDataFiltered];
     this.itemsToShow = 5;
     this.itemCardDataFiltered = this.orderByPipe
       .transform(this.itemCardDataFiltered, item.sortingField, item.descendantSorting, item.isStringFieldType);
   }
 
   openFavoriteItemModal(): void {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    const modalDialog = this.dialog.open(ItemFavoriteModalComponent, {
-      data: null,
-      panelClass: 'theme-dialog',
-      autoFocus: false
+    const dialogRef = this.dialog.open(ItemFavoriteModalComponent, {
+      data: {
+        cardMode: 'basicMode'
+      }
     });
   }
 }

@@ -4,13 +4,15 @@ import { ItemFavoriteModalComponent } from './item-favorite-modal.component';
 import { ItemSearchModule } from '../item-search/item-search.module';
 import { ItemCardModule } from '../item-card/item-card.module';
 import { FilterByFavoritesPipeModule } from '../../pipes/filter-by-favorites/filter-by-favorites.pipe-module';
+import { FilterSearchPipeModule } from '../../pipes/filter-search/filter-search.pipe.module';
 
 @NgModule({
   imports: [
     CommonModule,
     ItemSearchModule,
     ItemCardModule,
-    FilterByFavoritesPipeModule
+    FilterByFavoritesPipeModule,
+    FilterSearchPipeModule
   ],
   exports: [
     ItemFavoriteModalComponent

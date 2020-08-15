@@ -14,7 +14,7 @@ export class FilterSearchPipe implements PipeTransform {
   }
   removeDiacritics(searchItem: string): any {
     const dict: any = {'á': 'a', 'ç': 'c'};
-    return searchItem.replace(/[^\w ]/g, char => dict[char] || char).toLowerCase();
+    return (searchItem || '').replace(/[^\w ]/g, char => dict[char] || char).toLowerCase();
   }
 }
 

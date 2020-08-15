@@ -9,35 +9,22 @@ import { UtilsServiceService } from '../../services/utils-service.service';
   styleUrls: ['./item-card.component.scss'],
 })
 export class ItemCardComponent implements OnInit {
-  private favoriteItems: ItemCardModel[] = [];
-  // tslint:disable-next-line:variable-name
-  private _itemCardData: ItemCardModel[];
-  @Input() set itemCardData(value) {
-    if (value) {
-      this._itemCardData = value;
-      console.log(value);
-    }
-  }
-
-  get itemCardData(): ItemCardModel[] {
-    return this._itemCardData;
-  }
+  @Input() itemCardData: ItemCardModel[];
+  @Input() itemCardDataMode: any;
 
   constructor(private favoriteItemsService: FavoriteItemsService,
-              public utilsService: UtilsServiceService,
-              private changeDetectorRef: ChangeDetectorRef) {
+              public utilsService: UtilsServiceService) {
   }
 
   ngOnInit(): void {
   }
 
   setFavoriteItem(item): void {
-    console.log('he clic');
     item.isFavoriteItem = !item.isFavoriteItem;
     this.saveFavoriteItem();
   }
 
-  saveFavoriteItem(): void {
+  private saveFavoriteItem(): void {
     this.favoriteItemsService.saveFavoriteItems(this.itemCardData);
   }
 }

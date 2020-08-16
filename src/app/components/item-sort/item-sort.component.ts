@@ -30,7 +30,7 @@ export class ItemSortComponent {
     this.hasToShowSortingPanel = forceStatus || !this.hasToShowSortingPanel;
   }
 
-  sortField(sortingField: string, descendantSorting: boolean = true, currentSortingField: string): void {
+  sortField(sortingField: string, descendantSorting: boolean, currentSortingField: string): void {
     this.currentSortingField = currentSortingField;
     this.handleSortItem.emit({
       sortingField,

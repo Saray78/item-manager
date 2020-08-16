@@ -22,7 +22,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   itemsToShow: number = 5;
   isLoadingMoreItems: boolean = false;
   isNewSearch: boolean = false;
-
+  readonly MAX_MODAL_HEIGHT = '600px';
+  readonly MAX_CHARACTERS: 175;
   private unsubscribe: Subject<void> = new Subject<void>();
 
   constructor(private route: ActivatedRoute,
@@ -32,13 +33,13 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    console.log(this.route);
     this.route.data
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(({ itemData }: ItemCardData) => {
         this.itemCardData = itemData;
         this.itemCardDataFiltered = [...this.itemCardData];
         this.truncateItemDescription(this.itemCardDataFiltered);
-        console.log(this.itemCardData);
       });
   }
 
@@ -49,7 +50,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private truncateItemDescription(itemCardDataFiltered: ItemCardModel[]): void {
     itemCardDataFiltered.forEach((item: ItemCardModel) => {
-      item.description = `${item.description.substring(0, 175 - 2)}…`;
+      item.description = `${item.description.substring(0, this.MAX_CHARACTERS - 2)}…`;
     });
   }
 
@@ -85,7 +86,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       data: {
         cardMode: ItemSearchMode.basicMode
       },
-      maxHeight: '600px'
+      maxHeight: this.MAX_MODAL_HEIGHT
     });
   }
 }

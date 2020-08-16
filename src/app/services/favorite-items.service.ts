@@ -1,21 +1,14 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { ItemCardModel } from '../models/item-card-model/item-card-model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FavoriteItemsService {
+  favoriteItemList$: BehaviorSubject<ItemCardModel[]> = new BehaviorSubject<any>([]);
 
-  favoriteItemList$: BehaviorSubject<any> = new BehaviorSubject<any>([]);
-  galleryVisibilityStatus$: EventEmitter<boolean> = new EventEmitter<boolean>();
-
-  constructor() { }
-
-  saveFavoriteItems(value): void {
-    this.favoriteItemList$.next(value);
-  }
-
-  favoriteItemsVisible(status: boolean): void {
-    this.galleryVisibilityStatus$.emit(status);
+  saveFavoriteItems(itemCard: ItemCardModel[]): void {
+    this.favoriteItemList$.next(itemCard);
   }
 }

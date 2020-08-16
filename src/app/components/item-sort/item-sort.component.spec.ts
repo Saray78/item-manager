@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ItemSortComponent } from './item-sort.component';
 import { ClickOutsideModule } from 'ng-click-outside';
 
-fdescribe('ItemSortComponent', () => {
+describe('ItemSortComponent', () => {
   let component: ItemSortComponent;
   let fixture: ComponentFixture<ItemSortComponent>;
 
@@ -55,8 +55,30 @@ fdescribe('ItemSortComponent', () => {
     });
   });
 
+  describe('when is a new search', () => {
+    beforeEach(() => {
+      component.isNewSearch = true;
+    });
+    it('should have isNewSearch defined', () => {
+      expect(component.isNewSearch).toEqual(true);
+    });
+    it('should have reset sorting', () => {
+      expect(component.currentSortingField).toEqual(null);
+    });
+  });
+
+  describe('when is not a new search', () => {
+    beforeEach(() => {
+      component.isNewSearch = false;
+    });
+    it('should have reset sorting', () => {
+      expect(component.currentSortingField).toEqual(undefined);
+    });
+  });
+
   describe('when sort string ascending items', () => {
     let spyOnOutput;
+    const currentSortingField = 'asc-title';
     const mockedInputSort = {
       sortingField: 'title',
       descendantSorting: false,
@@ -65,10 +87,10 @@ fdescribe('ItemSortComponent', () => {
 
     beforeEach(() => {
       spyOnOutput = spyOn(component.handleSortItem, 'emit');
-      component.sortField(mockedInputSort.sortingField, mockedInputSort.descendantSorting, 'asc-title');
+      component.sortField(mockedInputSort.sortingField, mockedInputSort.descendantSorting, currentSortingField);
     });
     it('should have currentSortingField', () => {
-      expect(component.currentSortingField).toHaveBeenCalledWith(mockedInputSort.sortingField);
+      expect(component.currentSortingField).toEqual(currentSortingField);
     });
 
     it('should have to emit the input', () => {
@@ -78,6 +100,7 @@ fdescribe('ItemSortComponent', () => {
 
   describe('when sort string descending items', () => {
     let spyOnOutput;
+    const currentSortingField = 'desc-title';
     const mockedInputSort = {
       sortingField: 'title',
       descendantSorting: true,
@@ -86,11 +109,11 @@ fdescribe('ItemSortComponent', () => {
 
     beforeEach(() => {
       spyOnOutput = spyOn(component.handleSortItem, 'emit');
-      component.sortField(mockedInputSort.sortingField, mockedInputSort.descendantSorting, 'desc-title');
+      component.sortField(mockedInputSort.sortingField, mockedInputSort.descendantSorting, currentSortingField);
     });
 
     it('should have currentSortingField', () => {
-      expect(component.currentSortingField).toHaveBeenCalledWith(mockedInputSort.sortingField);
+      expect(component.currentSortingField).toEqual(currentSortingField);
     });
 
 
@@ -101,6 +124,7 @@ fdescribe('ItemSortComponent', () => {
 
   describe('when sort number ascending items', () => {
     let spyOnOutput;
+    const currentSortingField = 'asc-price';
     const mockedInputSort = {
       sortingField: 'price',
       descendantSorting: false,
@@ -109,10 +133,10 @@ fdescribe('ItemSortComponent', () => {
 
     beforeEach(() => {
       spyOnOutput = spyOn(component.handleSortItem, 'emit');
-      component.sortField(mockedInputSort.sortingField, mockedInputSort.descendantSorting, 'asc-price');
+      component.sortField(mockedInputSort.sortingField, mockedInputSort.descendantSorting, currentSortingField);
     });
     it('should have currentSortingField', () => {
-      expect(component.currentSortingField).toHaveBeenCalledWith(mockedInputSort.sortingField);
+      expect(component.currentSortingField).toEqual(currentSortingField);
     });
 
     it('should have to emit the input', () => {
@@ -122,6 +146,7 @@ fdescribe('ItemSortComponent', () => {
 
   describe('when sort number descending items', () => {
     let spyOnOutput;
+    const currentSortingField = 'desc-price';
     const mockedInputSort = {
       sortingField: 'price',
       descendantSorting: true,
@@ -130,10 +155,10 @@ fdescribe('ItemSortComponent', () => {
 
     beforeEach(() => {
       spyOnOutput = spyOn(component.handleSortItem, 'emit');
-      component.sortField(mockedInputSort.sortingField, mockedInputSort.descendantSorting, 'desc-price');
+      component.sortField(mockedInputSort.sortingField, mockedInputSort.descendantSorting, currentSortingField);
     });
     it('should have currentSortingField', () => {
-      expect(component.currentSortingField).toHaveBeenCalledWith(mockedInputSort.sortingField);
+      expect(component.currentSortingField).toEqual(currentSortingField);
     });
 
     it('should have to emit the input', () => {

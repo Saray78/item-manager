@@ -22,4 +22,8 @@ describe('NoItemsMessageComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have message', () => {
+    expect(component.itemsMessage).toEqual('No items found for your search');
+  });
 });

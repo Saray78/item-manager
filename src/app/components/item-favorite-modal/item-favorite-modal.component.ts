@@ -26,8 +26,8 @@ export class ItemFavoriteModalComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.favoriteItemsService.favoriteItemList$
       .pipe(takeUntil(this.unsubscribe))
-      .subscribe(items => {
-        this.favoriteItemCardData = items;
+      .subscribe((itemList: ItemCardModel[]) => {
+        this.favoriteItemCardData = itemList;
         this.favoriteItemCardDataFiltered = [...this.favoriteItemCardData];
       });
 

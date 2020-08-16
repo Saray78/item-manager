@@ -5,9 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class UtilsServiceService {
 
-  constructor() {
-  }
-
   trackByFunction(idName, index, item): any {
     if (!item) {
       return null;

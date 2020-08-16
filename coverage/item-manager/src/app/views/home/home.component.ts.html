@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">20.93% </span>
+                <span class="strong">20% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>9/43</span>
+                <span class='fraction'>9/45</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">22.5% </span>
+                <span class="strong">21.95% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/40</span>
+                <span class='fraction'>9/41</span>
             </div>
         
             
@@ -148,7 +148,8 @@
 <a name='L89'></a><a href='#L89'>89</a>
 <a name='L90'></a><a href='#L90'>90</a>
 <a name='L91'></a><a href='#L91'>91</a>
-<a name='L92'></a><a href='#L92'>92</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L92'></a><a href='#L92'>92</a>
+<a name='L93'></a><a href='#L93'>93</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -172,6 +173,7 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -183,8 +185,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -263,7 +265,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 <span class="cstat-no" title="statement not covered" >  itemsToShow: number = 5;</span>
 <span class="cstat-no" title="statement not covered" >  isLoadingMoreItems: boolean = false;</span>
 <span class="cstat-no" title="statement not covered" >  isNewSearch: boolean = false;</span>
-&nbsp;
+  readonly <span class="cstat-no" title="statement not covered" >MAX_MODAL_HEIGHT = '600px';</span>
+  readonly MAX_CHARACTERS: 175;
   private <span class="cstat-no" title="statement not covered" >unsubscribe: Subject&lt;void&gt; = new Subject&lt;void&gt;();</span>
 &nbsp;
 <span class="fstat-no" title="function not covered" >  constructor(private <span class="cstat-no" title="statement not covered" >r</span>oute: ActivatedRoute,</span>
@@ -273,13 +276,13 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 &nbsp;
 <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >  ngOnInit(</span></span>): void {
+<span class="cstat-no" title="statement not covered" >    console.log(this.route);</span>
 <span class="cstat-no" title="statement not covered" >    this.route.data</span>
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(<span class="fstat-no" title="function not covered" >({</span> itemData<span class="cstat-no" title="statement not covered" > }: ItemCardData)</span> =&gt; {
 <span class="cstat-no" title="statement not covered" >        this.itemCardData = itemData;</span>
 <span class="cstat-no" title="statement not covered" >        this.itemCardDataFiltered = [...this.itemCardData];</span>
 <span class="cstat-no" title="statement not covered" >        this.truncateItemDescription(this.itemCardDataFiltered);</span>
-<span class="cstat-no" title="statement not covered" >        console.log(this.itemCardData);</span>
       });
   }
 &nbsp;
@@ -288,9 +291,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 <span class="cstat-no" title="statement not covered" >    this.unsubscribe.complete();</span>
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  private t</span>runcateItemDescription(itemCardDataFiltered: ItemCardModel[]): void {
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >  private t</span></span>runcateItemDescription(itemCardDataFiltered: ItemCardModel[]): void {
 <span class="cstat-no" title="statement not covered" >    itemCardDataFiltered.forEach(<span class="fstat-no" title="function not covered" >(i</span>tem: ItemCardModel) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      item.description = `${item.description.substring(0, 175 - 2)}…`;</span>
+<span class="cstat-no" title="statement not covered" >      item.description = `${item.description.substring(0, this.MAX_CHARACTERS - 2)}…`;</span>
     });
   }
 &nbsp;
@@ -326,7 +329,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       data: {
         cardMode: ItemSearchMode.basicMode
       },
-      maxHeight: '600px'
+      maxHeight: this.MAX_MODAL_HEIGHT
     });
   }
 }
@@ -337,7 +340,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sun Aug 16 2020 16:16:48 GMT+0200 (Central European Summer Time)
+                at Sun Aug 16 2020 21:01:33 GMT+0200 (Central European Summer Time)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>

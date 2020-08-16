@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { UtilsServiceService } from './utils-service.service';
 
-fdescribe('UtilsServiceService', () => {
+describe('UtilsServiceService', () => {
   let service: UtilsServiceService;
   const mockedItem = {
     title: 'title1',
@@ -61,16 +61,4 @@ fdescribe('UtilsServiceService', () => {
       expect(changedItem).toEqual('Id0');
     });
   });
-
-  describe('when item only have index', () => {
-    let changedItem: string;
-    beforeEach(() => {
-      changedItem = service.trackByFunction('', 0, {});
-    });
-
-    it('should have return the unique item changed', () => {
-      expect(changedItem).toEqual('0');
-    });
-  });
-
 });

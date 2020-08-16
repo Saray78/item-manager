@@ -9,7 +9,7 @@ export class UtilsServiceService {
     if (!item) {
       return null;
     }
-    return `${item[idName] || item.id}${index}` || index;
+    return `${item[idName] || item.id}${index}`;
   }
 
 }

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">26.32% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>5/19</span>
+                <span class='fraction'>19/19</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">83.33% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/12</span>
+                <span class='fraction'>10/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">31.25% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>5/16</span>
+                <span class='fraction'>16/16</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -98,31 +98,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">200x</span>
+<span class="cline-any cline-yes">84x</span>
+<span class="cline-any cline-yes">116x</span>
+<span class="cline-any cline-yes">96x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">20x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">60x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Pipe, PipeTransform } from '@angular/core';
@@ -132,31 +132,31 @@
 })
 export class OrderByPipe implements PipeTransform {
 &nbsp;
-<span class="fstat-no" title="function not covered" >  transform(</span>array: any[], field: string, <span class="cstat-no" title="statement not covered" >descendantSorting: boolean = true, <span class="cstat-no" title="statement not covered" >i</span>sStringFieldType: boolean = true): any[] {</span>
+  transform(array: any[], field: string, <span class="missing-if-branch" title="if path not taken" >I</span>descendantSorting: boolean = true, <span class="missing-if-branch" title="if path not taken" >I</span>isStringFieldType: boolean = true): any[] {
     let sortedArray;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (isStringFieldType) {</span>
-<span class="cstat-no" title="statement not covered" >      sortedArray = this.sortStringFields(array, field);</span>
+    if (isStringFieldType) {
+      sortedArray = this.sortStringFields(array, field);
     } else {
-<span class="cstat-no" title="statement not covered" >      sortedArray = this.sortNumberFields(array, field);</span>
+      sortedArray = this.sortNumberFields(array, field);
     }
-<span class="cstat-no" title="statement not covered" >    return descendantSorting ? sortedArray : sortedArray.reverse();</span>
+    return descendantSorting ? sortedArray : sortedArray.reverse();
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  private s</span>ortStringFields(array, field): [] {
-<span class="cstat-no" title="statement not covered" >    return array.sort(<span class="fstat-no" title="function not covered" >(a</span>, b) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      if (a[field].toLowerCase() &gt; b[field].toLowerCase()) {</span>
-<span class="cstat-no" title="statement not covered" >        return 1;</span>
-      } else <span class="cstat-no" title="statement not covered" >if (a[field].toLowerCase() &lt; b[field].toLowerCase()) {</span>
-<span class="cstat-no" title="statement not covered" >        return -1;</span>
+  private sortStringFields(array, field): [] {
+    return array.sort((a, b) =&gt; {
+      if (a[field].toLowerCase() &gt; b[field].toLowerCase()) {
+        return 1;
+      } else if (a[field].toLowerCase() &lt; b[field].toLowerCase()) {
+        return -1;
       } else {
-<span class="cstat-no" title="statement not covered" >        return 0;</span>
+        return 0;
       }
     });
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  private s</span>ortNumberFields(array, field): [] {
-<span class="cstat-no" title="statement not covered" >    return array.sort(<span class="fstat-no" title="function not covered" >(a</span>: number, b: number) =&gt; <span class="cstat-no" title="statement not covered" >a[field] - b[field]);</span></span>
+  private sortNumberFields(array, field): [] {
+    return array.sort((a: number, b: number) =&gt; a[field] - b[field]);
   }
 }
 &nbsp;</pre></td></tr></table></pre>
@@ -166,7 +166,7 @@ export class OrderByPipe implements PipeTransform {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sun Aug 16 2020 21:01:33 GMT+0200 (Central European Summer Time)
+                at Sun Aug 16 2020 21:37:31 GMT+0200 (Central European Summer Time)
             </div>
         </div>
         <script src="../../../../prettify.js"></script>

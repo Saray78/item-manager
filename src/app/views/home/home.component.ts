@@ -5,8 +5,10 @@ import { FilterSearchPipe } from '../../pipes/filter-search/filter-search.pipe';
 import { OrderByPipe } from '../../pipes/order-by/order-by.pipe';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ItemFavoriteModalComponent } from '../../components/item-favorite-modal/item-favorite-modal.component';
+import { Fields, SortingFieldsInput } from '../../models/item-sort-model/item-sort-model';
+import { ItemSearchMode } from '../../models/item-search-model/item-search.model';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +20,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   itemCardDataFiltered: ItemCardModel[];
   item: ItemCardModel;
   itemsToShow: number = 5;
-  isLoading: boolean = false;
+  isLoadingMoreItems: boolean = false;
+  isLoadingCardData: boolean = false;
   isNewSearch: boolean = false;
 
   private unsubscribe: Subject<void> = new Subject<void>();
@@ -51,37 +54,39 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
   }
 
-  increaseShow(): void {
-    this.isLoading = true;
+  increaseShowItems(): void {
+    this.isLoadingMoreItems = true;
     setTimeout(() => {
       this.itemsToShow += 5;
-      this.isLoading = false;
+      this.isLoadingMoreItems = false;
     }, 1000);
   }
 
-  setSearchedItem(item): void {
+  setSearchedItem(itemSearched: string): void {
     this.isNewSearch = true;
     this.itemsToShow = 5;
     this.itemCardDataFiltered = this.filterSearchPipe
-      .transform(this.itemCardData, item, ['title', 'description', 'price', 'email']);
+      .transform(this.itemCardData, itemSearched, Fields.allFields);
     setTimeout(() => {
       this.isNewSearch = false;
-    }, 1000);
+    }, 500);
   }
 
 
-  setSortedItems(item): void {
+  setSortedItems(sortingFieldsInput: SortingFieldsInput): void {
     this.itemCardDataFiltered = [...this.itemCardDataFiltered];
     this.itemsToShow = 5;
     this.itemCardDataFiltered = this.orderByPipe
-      .transform(this.itemCardDataFiltered, item.sortingField, item.descendantSorting, item.isStringFieldType);
+      .transform(this.itemCardDataFiltered, sortingFieldsInput.sortingField,
+        sortingFieldsInput.descendantSorting, sortingFieldsInput.isStringFieldType);
   }
 
   openFavoriteItemModal(): void {
-    const dialogRef = this.dialog.open(ItemFavoriteModalComponent, {
+    this.dialog.open(ItemFavoriteModalComponent, {
       data: {
-        cardMode: 'basicMode'
-      }
+        cardMode: ItemSearchMode.basicMode
+      },
+      maxHeight: '600px'
     });
   }
 }

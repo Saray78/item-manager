@@ -1,30 +1,63 @@
 @import "../../../styles/variables";
 @import "src/styles/buttons";
 
-
-
+.header-container {
+  background-color: white;
+}
 .item-search-container {
-  padding: 15px 15px;
+  padding: 0 15px 0 15px;
+  height: 60px;
   border-bottom: 1px solid $search-container-border;
+
+  .item-search {
+    app-item-search {
+      flex: 1 1 auto;
+    }
+  }
+
   .fav-list-container {
     width: 300px;
     justify-content: flex-end;
+
+    .fav-list-content {
+      height: 60px;
+      width: 140px;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+
+      .fav-title {
+        margin-left: 5px;
+      }
+
+      .material-icons {
+        &.favorite {
+          color: $default-fav-color;
+        }
+      }
+
+      &:hover {
+        border-bottom: 2px solid #586B71;
+      }
+    }
   }
 }
+
 .item-sort-container {
   border-bottom: 1px solid $search-container-border;
-  height: 10px;
-  padding: 15px 15px;
-  cursor: pointer;
+  height: 40px;
+  padding: 0 15px 0 15px;
 }
 
 .item-card-container {
-  background-color: $card-container-background;
   padding-bottom: 100px;
 
-  .show-more-items {
-    @extend .primary-button;
-    width: 134px;
-    height: 41px;
+  .show-more-items-container {
+    height: 50px;
+
+    .show-more-items {
+      @extend .primary-button;
+      width: 134px;
+      height: 41px;
+    }
   }
 }

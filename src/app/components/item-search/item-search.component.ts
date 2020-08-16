@@ -1,22 +1,22 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ItemCardModel } from '../../models/item-card-model/item-card-model';
+import { ItemSearchMode, ItemSearchModel, SearchBy } from '../../models/item-search-model/item-search.model';
 
 @Component({
   selector: 'app-item-search',
   templateUrl: './item-search.component.html',
   styleUrls: ['./item-search.component.scss']
 })
-export class ItemSearchComponent implements OnInit {
+export class ItemSearchComponent {
+  @Input() set itemCardDataMode(value: string) {
+    this.searchBy = value && value === ItemSearchMode.basicMode ? SearchBy.titleField : SearchBy.allFields;
+  }
+
+  @Output() handleItem: EventEmitter<string> = new EventEmitter<string>();
   item: ItemCardModel;
-  @Output() handleItem: EventEmitter<any> = new EventEmitter<any>();
+  searchBy: string = SearchBy.allFields;
 
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
-
-  searchItem(item): void {
-    this.handleItem.emit(item.inputItem);
+  searchItem(itemSearched: ItemSearchModel): void {
+    this.handleItem.emit(itemSearched.inputItem);
   }
 }

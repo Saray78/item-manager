@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnInit } 
 import { ItemCardModel } from '../../models/item-card-model/item-card-model';
 import { FavoriteItemsService } from '../../services/favorite-items.service';
 import { UtilsServiceService } from '../../services/utils-service.service';
+import { ItemSearchMode } from '../../models/item-search-model/item-search.model';
 
 @Component({
   selector: 'app-item-card',
@@ -11,6 +12,7 @@ import { UtilsServiceService } from '../../services/utils-service.service';
 export class ItemCardComponent implements OnInit {
   @Input() itemCardData: ItemCardModel[];
   @Input() itemCardDataMode: any;
+  readonly ITEM_SEARCH_BASIC_MODE: string = ItemSearchMode.basicMode;
 
   constructor(private favoriteItemsService: FavoriteItemsService,
               public utilsService: UtilsServiceService) {

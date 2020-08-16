@@ -1,10 +1,12 @@
-<div>
-    <app-item-search (handleItem)="searchFavoritesByTitle($event)"></app-item-search>
+<div class="search-favorites-container">
+    <app-item-search
+            [itemCardDataMode]="itemCardDataMode"
+            (handleItem)="searchFavoritesByTitle($event)"></app-item-search>
 </div>
 
-<div>
+<div class="favorite-items-container">
     <app-item-card
-            [itemCardData]="favoriteItemCardData | filterByFavorites | filterSearch : item :['title'] "
+            [itemCardData]="favoriteItemCardDataFiltered | filterByFavorites | filterSearch : item : FILTER_BY_TITLE"
             [itemCardDataMode]="itemCardDataMode">
     </app-item-card>
 </div>

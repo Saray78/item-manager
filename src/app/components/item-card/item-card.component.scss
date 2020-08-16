@@ -1,7 +1,8 @@
 @import "../../../styles/variables";
+@import "../../../styles/mixins";
 
 .item-card-container {
-  padding-bottom: 30px;
+  padding: 15px 0 30px 0;
   font-family: $default-font;
   flex-direction: row;
   position: relative;
@@ -11,6 +12,7 @@
   max-width: 1200px;
 
   .item-card {
+    @include box-shadow( 0 2px 10px 0 rgba(37,50,56,.1));
     flex-direction: column;
     background-color: white;
     margin: 10px;
@@ -23,21 +25,13 @@
           top-left-radius: 6px;
           top-right-radius: 6px;
         }
+
         &.responsive-image {
-          //width: auto;
           max-width: 100%;
           overflow: hidden;
-
           //height: auto;
-          //zoom: 2;  //increase if you have very small images
-          //
-          //display: block;
-          //margin: auto;
-          //
-          height: auto;
-          //
-          //width: auto;
         }
+
         height: 280px;
         width: 280px;
       }
@@ -49,6 +43,7 @@
 
       .item-header-content {
         .item-price {
+          font-size: 16px;
           margin-top: 12px;
         }
 
@@ -57,7 +52,7 @@
 
           &.favorite {
             &.active, &:hover {
-              color: #FD6C67;
+              color: $default-fav-color;
             }
           }
         }
@@ -80,7 +75,7 @@
       padding: 0 12px 0 12px;
 
       .email {
-        color: #7A8183;
+        color: $card-email-text;
         font-size: 12px;
       }
     }

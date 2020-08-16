@@ -15,6 +15,7 @@ import { OrderByPipeModule } from '../../pipes/order-by/order-by.pipe.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ItemFavoriteModalModule } from '../../components/item-favorite-modal/item-favorite-modal.module';
 import { PureSlicePipeModule } from '../../pipes/pure-slice/pure-slice.pipe.module';
+import { NoItemsMessageModule } from '../../components/no-items-message/no-items-message.module';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { PureSlicePipeModule } from '../../pipes/pure-slice/pure-slice.pipe.modu
     OrderByPipeModule,
     MatDialogModule,
     PureSlicePipeModule,
-    ItemFavoriteModalModule
+    ItemFavoriteModalModule,
+    NoItemsMessageModule
 
   ],
   exports: [

@@ -7,12 +7,16 @@
   vertical-align: middle;
   white-space: nowrap;
   height: 40px;
+  width: 100%;
+
   form {
     flex: 1;
+
     input {
       @include placeholder {
         color: #a1a4a6;
       }
+      width: 100%;
       background-color: #d7dadc;
       font-size: 10pt;
       float: left;
@@ -21,6 +25,7 @@
       padding: 0 15px 0 15px;
       outline: 0;
       border-radius: 6px;
+
       &:focus {
         border: 1px solid $default-color;
         background-color: white;
@@ -29,20 +34,22 @@
   }
 
   .search-icon {
-    margin:  {
+    margin: {
       top: 2px;
       bottom: 2px;
     };
+
     button {
       @extend .button;
       background-color: transparent;
+
       &:disabled {
         cursor: not-allowed;
       }
+
       &:hover:not(:disabled) {
         color: $default-color;
       }
     }
-
   }
 }

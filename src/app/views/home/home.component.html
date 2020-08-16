@@ -1,33 +1,43 @@
-<div class="item-search-container d-flex">
-    <div class="item-search d-flex w-100">
-        <app-item-search (handleItem)="setSearchedItem($event)" style="flex: 1"></app-item-search>
-    </div>
-    <div class="fav-list-container d-flex align-items-center">
-        <span class="d-flex align-items-center justify-content-center" (click)="openFavoriteItemModal()">
-            Ver favoritos
-            <i class="material-icons">favorite</i>
+<div class="header-container">
+    <div class="item-search-container d-flex align-items-center">
+        <div class="item-search d-flex w-100">
+            <app-item-search (handleItem)="setSearchedItem($event)"></app-item-search>
+        </div>
+        <div class="fav-list-container d-flex align-items-center">
+        <span class="fav-list-content d-flex align-items-center justify-content-center"
+              (click)="openFavoriteItemModal()">
+             <i class="material-icons favorite">favorite</i>
+            <span class="fav-title">See Favorites</span>
         </span>
-</div>
-</div>
-
-<div class="item-sort-container d-flex align-items-center">
-    <app-item-sort (handleSortItem)="setSortedItems($event)" [isNewSearch]="isNewSearch"></app-item-sort>
-</div>
-
-<div class="item-card-container">
-    <app-item-card [itemCardData]="itemCardDataFiltered | pureSlice: 0 : itemsToShow"></app-item-card>
-    <div class="d-flex justify-content-center align-items-center"
-         *ngIf="itemsToShow < itemCardDataFiltered.length && !isLoading"
-         style="height: 50px;">
-        <button class="show-more-items"
-                role="button"
-                (click)="increaseShow()"> Show more items</button>
+        </div>
     </div>
-    <div class="spinner d-flex justify-content-center align-items-center" *ngIf="isLoading">
-        <mat-progress-spinner
-                [diameter]="75"
-                [color]="'primary'"
-                [mode]="'indeterminate'">
-        </mat-progress-spinner>
+
+    <div class="item-sort-container d-flex align-items-center">
+        <app-item-sort (handleSortItem)="setSortedItems($event)" [isNewSearch]="isNewSearch"></app-item-sort>
     </div>
 </div>
+
+<div class="item-card-container" *ngIf="itemCardDataFiltered?.length > 0 else noItemsMessage">
+    <ng-container *ngIf="!isNewSearch">
+        <app-item-card [itemCardData]="itemCardDataFiltered | pureSlice: 0 : itemsToShow"></app-item-card>
+        <div *ngIf="itemsToShow < itemCardDataFiltered.length && !isLoadingMoreItems"
+             class="show-more-items-container d-flex justify-content-center align-items-center">
+            <button class="show-more-items"
+                    role="button"
+                    (click)="increaseShowItems()">
+                Show more items
+            </button>
+        </div>
+        <div *ngIf="isLoadingMoreItems" class="spinner d-flex justify-content-center align-items-center">
+            <mat-progress-spinner
+                    [diameter]="75"
+                    [color]="'primary'"
+                    [mode]="'indeterminate'">
+            </mat-progress-spinner>
+        </div>
+    </ng-container>
+</div>
+
+<ng-template #noItemsMessage>
+    <app-no-items-message></app-no-items-message>
+</ng-template>

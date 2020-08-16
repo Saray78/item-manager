@@ -38,7 +38,28 @@ export const SortingFields: ItemSortModel[] = [
   }
 ];
 
+
+export interface SortingFieldsInput {
+  sortingField: string;
+  descendantSorting: boolean;
+  isStringFieldType: boolean;
+}
+
+
 export enum Order {
   asc = 'asc-',
   desc = 'desc'
 }
+
+export enum FilterBy {
+  title = 'title',
+  description = 'description',
+  price = 'price',
+  email = 'email',
+}
+
+
+export const Fields = {
+  allFields: [FilterBy.title, FilterBy.description, FilterBy.price, FilterBy.email],
+  byTitle: [FilterBy.title]
+};

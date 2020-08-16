@@ -1,18 +1,17 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ItemSortModel, Order, SortingFields } from '../../models/item-sort-model/item-sort-model';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { FilterBy, ItemSortModel, Order, SortingFields, SortingFieldsInput } from '../../models/item-sort-model/item-sort-model';
 
 @Component({
   selector: 'app-item-sort',
   templateUrl: './item-sort.component.html',
   styleUrls: ['./item-sort.component.scss']
 })
-export class ItemSortComponent implements OnInit {
+export class ItemSortComponent {
 
   sortingFields: ItemSortModel[] = SortingFields;
   hasToShowSortingPanel: boolean = false;
   currentSortingField: string;
   readonly order = Order;
-  // tslint:disable-next-line:variable-name
   private _isNewSearch: boolean;
   @Input() set isNewSearch(value: boolean) {
     if (value) {
@@ -25,13 +24,7 @@ export class ItemSortComponent implements OnInit {
     return this._isNewSearch;
   }
 
-  @Output() handleSortItem: EventEmitter<any> = new EventEmitter<any>();
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
+  @Output() handleSortItem: EventEmitter<SortingFieldsInput> = new EventEmitter<SortingFieldsInput>();
 
   toggleSortingPanel(forceStatus?: boolean): void {
     this.hasToShowSortingPanel = forceStatus || !this.hasToShowSortingPanel;
@@ -42,7 +35,7 @@ export class ItemSortComponent implements OnInit {
     this.handleSortItem.emit({
       sortingField,
       descendantSorting,
-      isStringFieldType: sortingField !== 'price'
+      isStringFieldType: sortingField !== FilterBy.price
     });
   }
 }

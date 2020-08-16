@@ -3,24 +3,18 @@
          *ngFor="let item of itemCardData; trackBy: utilsService.trackByFunction.bind(this, 'email')">
         <div class="item-image">
             <img [src]="item.image"
-                 [class.responsive-image]="itemCardDataMode === 'basicMode'"
+                 [class.responsive-image]="itemCardDataMode === ITEM_SEARCH_BASIC_MODE"
                  [title]="item.title"
                  [alt]="item.title"/>
         </div>
 
-        <div class="item-body" [class.p-0]="itemCardDataMode === 'basicMode'">
-            <ng-container [ngSwitch]="itemCardDataMode">
-                <ng-container *ngSwitchCase="'basicMode'">
-                    <ng-container *ngTemplateOutlet="basicCardBody"></ng-container>
-                </ng-container>
-
-                <ng-container *ngSwitchDefault>
-                    <ng-container *ngTemplateOutlet="defaultCardBody"></ng-container>
-                </ng-container>
+        <div class="item-body">
+            <ng-container *ngIf="itemCardDataMode === ITEM_SEARCH_BASIC_MODE else defaultCardBody">
+                <ng-container *ngTemplateOutlet="basicCardBody"></ng-container>
             </ng-container>
 
         </div>
-        <div class="item-card-footer" *ngIf="itemCardDataMode !== 'basicMode'">
+        <div class="item-card-footer" *ngIf="itemCardDataMode !== ITEM_SEARCH_BASIC_MODE">
             <p class="email">{{item.email}}</p>
         </div>
 

@@ -17,7 +17,7 @@
     </div>
 </div>
 
-<div class="item-card-container" *ngIf="itemCardDataFiltered?.length > 0 else noItemsMessage">
+<div class="item-card-container">
     <ng-container *ngIf="!isNewSearch">
         <app-item-card [itemCardData]="itemCardDataFiltered | pureSlice: 0 : itemsToShow"></app-item-card>
         <div *ngIf="itemsToShow < itemCardDataFiltered.length && !isLoadingMoreItems"
@@ -37,7 +37,3 @@
         </div>
     </ng-container>
 </div>
-
-<ng-template #noItemsMessage>
-    <app-no-items-message></app-no-items-message>
-</ng-template>

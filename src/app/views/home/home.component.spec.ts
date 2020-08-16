@@ -67,7 +67,6 @@ describe('HomeComponent', () => {
         HomeComponent,
         ItemSearchComponent,
         ItemSortComponent,
-        NoItemsMessageComponent,
         ItemCardComponent,
         PureSlicePipe
       ],
@@ -94,12 +93,6 @@ describe('HomeComponent', () => {
       .overrideComponent(ItemCardComponent, {
         set: {
           selector: 'app-item-card',
-          template: '<div></div>'
-        }
-      })
-      .overrideComponent(NoItemsMessageComponent, {
-        set: {
-          selector: 'app-no-items-message',
           template: '<div></div>'
         }
       })

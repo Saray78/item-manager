@@ -5,6 +5,7 @@ import { UtilsServiceService } from '../../services/utils-service.service';
 import { FavoriteItemsService } from '../../services/favorite-items.service';
 import { ItemCardModel } from '../../models/item-card-model/item-card-model';
 import { of } from 'rxjs';
+import { NoItemsMessageComponent } from '../no-items-message/no-items-message.component';
 
 describe('ItemCardComponent', () => {
   let component: ItemCardComponent;
@@ -14,12 +15,21 @@ describe('ItemCardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ItemCardComponent],
+      declarations: [
+        ItemCardComponent,
+        NoItemsMessageComponent
+      ],
       providers: [
         { provide: UtilsServiceService, useValue: utilsServiceSpy },
         { provide: FavoriteItemsService, useValue: favoriteItemsServiceSpy }
       ]
     })
+      .overrideComponent(NoItemsMessageComponent, {
+        set: {
+          selector: 'app-no-items-message',
+          template: '<div></div>'
+        }
+      })
       .compileComponents();
   }));
 

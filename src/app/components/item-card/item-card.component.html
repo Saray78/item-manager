@@ -1,3 +1,4 @@
+<ng-container *ngIf="itemCardData?.length > 0 else noItemsMessage">
 <div id="itemCard" class="item-card-container">
     <div class="item-card d-flex"
          *ngFor="let item of itemCardData; trackBy: utilsService.trackByFunction.bind(this, 'email')">
@@ -43,4 +44,8 @@
         </ng-template>
     </div>
 </div>
+</ng-container>
 
+<ng-template #noItemsMessage>
+    <app-no-items-message></app-no-items-message>
+</ng-template>

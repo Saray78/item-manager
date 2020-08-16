@@ -169,7 +169,7 @@ SF:src/app/components/no-items-message/no-items-message.component.ts
 FNF:0
 FNH:0
 DA:9,1
-DA:10,2
+DA:10,4
 DA:11,1
 LF:3
 LH:3
@@ -299,7 +299,7 @@ FNF:5
 FNH:5
 FNDA:4,(anonymous_2)
 FNDA:3,(anonymous_3)
-FNDA:242,(anonymous_4)
+FNDA:244,(anonymous_4)
 FNDA:1,(anonymous_5)
 FNDA:62,(anonymous_6)
 DA:6,1
@@ -310,10 +310,10 @@ DA:14,1
 DA:16,4
 DA:19,1
 DA:20,3
-DA:21,242
-DA:22,90
-DA:23,152
-DA:24,132
+DA:21,244
+DA:22,117
+DA:23,127
+DA:24,107
 DA:26,20
 DA:31,1
 DA:32,62
@@ -324,9 +324,9 @@ BRDA:11,0,0,3
 BRDA:11,0,1,1
 BRDA:16,1,0,3
 BRDA:16,1,1,1
-BRDA:21,2,0,90
-BRDA:21,2,1,152
-BRDA:23,3,0,132
+BRDA:21,2,0,117
+BRDA:21,2,1,127
+BRDA:23,3,0,107
 BRDA:23,3,1,20
 BRF:8
 BRH:8

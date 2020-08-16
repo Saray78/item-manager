@@ -21,7 +21,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   item: ItemCardModel;
   itemsToShow: number = 5;
   isLoadingMoreItems: boolean = false;
-  isLoadingCardData: boolean = false;
   isNewSearch: boolean = false;
 
   private unsubscribe: Subject<void> = new Subject<void>();

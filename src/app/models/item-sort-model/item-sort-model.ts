@@ -48,7 +48,7 @@ export interface SortingFieldsInput {
 
 export enum Order {
   asc = 'asc-',
-  desc = 'desc'
+  desc = 'desc-'
 }
 
 export enum FilterBy {

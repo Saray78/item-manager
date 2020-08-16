@@ -25,7 +25,7 @@ describe('HomeComponent', () => {
   const mockedData: ItemCardModel[] = [
     {
       title: 'title1',
-      description: 'description1',
+      description: 'Vendo un iPhone 6 S color Oro nuevo y sin estrenar. Me han dado uno en el trabajo y no necesito el que me compré. En tienda lo' + ' encuentras por 749 euros y yo lo vendo por 740, Vendo un iPhone 6 S color Oro nuevo y sin estrenar. Me han dado uno en el trabajo y no necesito el que me compré. En tienda lo encuentras por 749 euros y yo lo vendo por 740…',
       price: 'price1',
       email: 'email1',
       image: 'image1'
@@ -156,28 +156,28 @@ describe('HomeComponent', () => {
     const mockedDataFiltered: ItemCardModel[] = [
       {
         title: 'title1',
-        description: '…',
+        description: 'Vendo un iPhone 6 S color Oro nuevo y sin estrenar. Me han dado uno en el trabajo y no necesito el que me compré. En tienda lo encuentras por 749 euros y yo lo vendo por 740…',
         price: 'price1',
         email: 'email1',
         image: 'image1'
       },
       {
         title: 'title2',
-        description: '…',
+        description: 'description2',
         price: 'price2',
         email: 'email2',
         image: 'image2'
       },
       {
         title: 'title3',
-        description: '…',
+        description: 'description3',
         price: 'price3',
         email: 'email3',
         image: 'image3'
       },
       {
         title: 'title4',
-        description: '…',
+        description: 'description4',
         price: 'price4',
         email: 'email4',
         image: 'image4'
@@ -210,28 +210,28 @@ describe('HomeComponent', () => {
     const mockedDataFiltered: ItemCardModel[] = [
       {
         title: 'title1',
-        description: '…',
+        description: 'Vendo un iPhone 6 S color Oro nuevo y sin estrenar. Me han dado uno en el trabajo y no necesito el que me compré. En tienda lo encuentras por 749 euros y yo lo vendo por 740…',
         price: 'price1',
         email: 'email1',
         image: 'image1'
       },
       {
         title: 'title2',
-        description: '…',
+        description: 'description2',
         price: 'price2',
         email: 'email2',
         image: 'image2'
       },
       {
         title: 'title3',
-        description: '…',
+        description: 'description3',
         price: 'price3',
         email: 'email3',
         image: 'image3'
       },
       {
         title: 'title4',
-        description: '…',
+        description: 'description4',
         price: 'price4',
         email: 'email4',
         image: 'image4'

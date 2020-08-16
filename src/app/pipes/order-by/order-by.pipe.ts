@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class OrderByPipe implements PipeTransform {
 
-  transform(array: any[], field: string, descendantSorting: boolean = true, isStringFieldType: boolean = true): any[] {
+  transform(array: any[], field: string, descendantSorting: boolean, isStringFieldType: boolean): any[] {
     let sortedArray;
 
     if (isStringFieldType) {

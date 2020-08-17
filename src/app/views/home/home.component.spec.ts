@@ -9,19 +9,20 @@ import { MatDialog } from '@angular/material/dialog';
 import { of } from 'rxjs';
 import { ItemSearchComponent } from '../../components/item-search/item-search.component';
 import { ItemSortComponent } from '../../components/item-sort/item-sort.component';
-import { NoItemsMessageComponent } from '../../components/no-items-message/no-items-message.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { PureSlicePipe } from '../../pipes/pure-slice/pure-slice.pipe';
 import { ItemCardComponent } from '../../components/item-card/item-card.component';
 import { SortingFieldsInput } from '../../models/item-sort-model/item-sort-model';
 import { ItemFavoriteModalComponent } from '../../components/item-favorite-modal/item-favorite-modal.component';
+import { FavoriteItemsService } from '../../services/favorite-items.service';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
   const filterSearchPipeSpy = jasmine.createSpyObj('FilterSearchPipe', ['transform']);
   const orderSearchPipeSpy = jasmine.createSpyObj('OrderByPipe', ['transform']);
-  const matDialogServiceSpy = jasmine.createSpyObj('MatDialog', ['open']);
+  const favoriteItemsSpy = jasmine.createSpyObj('FavoriteItemsService', ['saveFavoriteItems']);
+  const matDialogServiceSpy = jasmine.createSpyObj('MatDialog', ['open', 'afterClosed']);
   const mockedData: ItemCardModel[] = [
     {
       title: 'title1',
@@ -74,7 +75,9 @@ describe('HomeComponent', () => {
         { provide: ActivatedRoute, useValue: activatedRouteMock },
         { provide: FilterSearchPipe, useValue: filterSearchPipeSpy },
         { provide: OrderByPipe, useValue: orderSearchPipeSpy },
-        { provide: MatDialog, useValue: matDialogServiceSpy }
+        { provide: MatDialog, useValue: matDialogServiceSpy },
+        { provide: FavoriteItemsService, useValue: favoriteItemsSpy }
+
       ]
     })
       .overrideComponent(ItemSearchComponent, {
@@ -256,7 +259,10 @@ describe('HomeComponent', () => {
 
   describe('when open favorite modal', () => {
     beforeEach(() => {
-      matDialogServiceSpy.open.and.returnValue(of({}));
+      matDialogServiceSpy.open.and.returnValue({
+        afterClosed: () => of({})
+      });
+      matDialogServiceSpy.afterClosed.and.returnValue(of({}));
       component.openFavoriteItemModal();
     });
 
@@ -267,6 +273,21 @@ describe('HomeComponent', () => {
         },
         maxHeight: '600px'
       });
+    });
+  });
+
+  describe('when close favorite modal', () => {
+    beforeEach(() => {
+      favoriteItemsSpy.saveFavoriteItems.and.returnValue(of({}));
+      matDialogServiceSpy.open.and.returnValue({
+        afterClosed: () => of({})
+      });
+      matDialogServiceSpy.afterClosed.and.returnValue(of({}));
+      component.openFavoriteItemModal();
+    });
+
+    it('should have save card items', () => {
+      expect(favoriteItemsSpy.saveFavoriteItems).toHaveBeenCalledWith(mockedData);
     });
   });
 

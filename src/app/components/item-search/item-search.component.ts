@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ItemCardModel } from '../../models/item-card-model/item-card-model';
 import { ItemSearchMode, ItemSearchModel, SearchBy } from '../../models/item-search-model/item-search.model';
 

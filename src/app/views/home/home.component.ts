@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ItemFavoriteModalComponent } from '../../components/item-favorite-modal/item-favorite-modal.component';
 import { Fields, SortingFieldsInput } from '../../models/item-sort-model/item-sort-model';
 import { ItemSearchMode } from '../../models/item-search-model/item-search.model';
+import { FavoriteItemsService } from '../../services/favorite-items.service';
 
 @Component({
   selector: 'app-home',
@@ -29,6 +30,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute,
               private filterSearchPipe: FilterSearchPipe,
               private orderByPipe: OrderByPipe,
+              private favoriteItemsService: FavoriteItemsService,
               public dialog: MatDialog) {
   }
 
@@ -87,6 +89,8 @@ export class HomeComponent implements OnInit, OnDestroy {
         cardMode: ItemSearchMode.basicMode
       },
       maxHeight: this.MAX_MODAL_HEIGHT
+    }).afterClosed().subscribe(() => {
+      this.favoriteItemsService.saveFavoriteItems(this.itemCardDataFiltered);
     });
   }
 }

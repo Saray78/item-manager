@@ -31,7 +31,7 @@ describe('HomeResolver', () => {
       homeResolver.resolve({ data: {} });
     });
 
-    it('tes', () => {
+    it('should have call to service', () => {
       expect(itemManagerSpy.getItemManagerItems).toHaveBeenCalledTimes(1);
     });
   });

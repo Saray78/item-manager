@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   isLoadingMoreItems: boolean = false;
   isNewSearch: boolean = false;
   readonly MAX_MODAL_HEIGHT: string = '600px';
+  readonly MIN_MODAL_WIDTH: string = '300px';
   readonly MAX_CHARACTERS: number = 175;
   private unsubscribe: Subject<void> = new Subject<void>();
 
@@ -88,7 +89,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       data: {
         cardMode: ItemSearchMode.basicMode
       },
-      maxHeight: this.MAX_MODAL_HEIGHT
+      maxHeight: this.MAX_MODAL_HEIGHT,
+      minWidth: this.MIN_MODAL_WIDTH
     }).afterClosed().subscribe(() => {
       this.favoriteItemsService.saveFavoriteItems(this.itemCardDataFiltered);
     });

@@ -271,7 +271,8 @@ describe('HomeComponent', () => {
         data: {
           cardMode: 'basicMode'
         },
-        maxHeight: '600px'
+        maxHeight: '600px',
+        minWidth: '300px',
       });
     });
   });

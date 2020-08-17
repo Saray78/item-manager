@@ -11,6 +11,7 @@ import { ItemSearchMode } from '../../models/item-search-model/item-search.model
 })
 export class ItemCardComponent {
   @Input() itemCardData: ItemCardModel[];
+  @Input() AllItemCardData: ItemCardModel[];
   @Input() itemCardDataMode: string;
   readonly ITEM_SEARCH_BASIC_MODE: string = ItemSearchMode.basicMode;
 
@@ -24,6 +25,6 @@ export class ItemCardComponent {
   }
 
   private saveFavoriteItem(): void {
-    this.favoriteItemsService.saveFavoriteItems(this.itemCardData);
+    this.favoriteItemsService.saveFavoriteItems(this.AllItemCardData);
   }
 }

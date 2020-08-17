@@ -1,6 +1,6 @@
 # ItemManager
 
-This repository contains the code for Wallapop's technical test for Frontend Engineer position, consisting on an Angular WebApp simulating an Item Manager, allowing to search for items, sort the displayed ones and add them to a favorites list.
+This repository contains an Angular WebApp simulating an Item Manager, allowing to search for items, sort the displayed ones and add them to a favorites list.
 
 # How to use it
 ## Run demo locally

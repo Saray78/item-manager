@@ -54,6 +54,7 @@ describe('ItemCardComponent', () => {
     };
     beforeEach(() => {
       component.itemCardData = [mockedItem];
+      component.itemCardDataList = [mockedItem];
       favoriteItemsServiceSpy.saveFavoriteItems.and.returnValue(of(mockedItem));
       component.setFavoriteItem(mockedItem);
     });

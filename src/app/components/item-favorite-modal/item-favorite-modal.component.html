@@ -6,6 +6,7 @@
 
 <div class="favorite-items-container">
     <app-item-card
+            [itemCardDataList]="favoriteItemCardDataFiltered"
             [itemCardData]="favoriteItemCardDataFiltered | filterByFavorites | filterSearch : item : FILTER_BY_TITLE"
             [itemCardDataMode]="itemCardDataMode">
     </app-item-card>

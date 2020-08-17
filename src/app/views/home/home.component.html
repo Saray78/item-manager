@@ -19,7 +19,9 @@
 
 <div class="item-card-container">
     <ng-container *ngIf="!isNewSearch">
-        <app-item-card [itemCardData]="itemCardDataFiltered | pureSlice: 0 : itemsToShow"></app-item-card>
+        <app-item-card
+                [itemCardDataList]="itemCardDataFiltered"
+                [itemCardData]="itemCardDataFiltered | pureSlice: 0 : itemsToShow"></app-item-card>
         <div *ngIf="itemsToShow < itemCardDataFiltered.length && !isLoadingMoreItems"
              class="show-more-items-container d-flex justify-content-center align-items-center">
             <button class="show-more-items"
